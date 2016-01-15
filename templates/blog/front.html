@@ -33,11 +33,17 @@
 	
 						{% for post in posts %}
 						</br>
+						<article>
+							<header>
+								<time>{{post.post_date}}</time>
+								<h2>{{post.title}}</h2>
+							</header>
 						<div class="container">
-						<p class="lead">
-							{{post.content}}
-						</p>
+							<p class="lead">
+								{{post.content}}
+							</p>
 						</div>
+						</article>
 						{% endfor %}
     	</body>
 </html>
