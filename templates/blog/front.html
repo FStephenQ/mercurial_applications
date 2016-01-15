@@ -13,19 +13,31 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		{% bootstrap_css %}
 		{% bootstrap_javascript %}
-		<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+		<link href="{% static 'css/blogbar.css' %}" rel="stylesheet">
 	</head>
 	<body>
 		<div class="site-wrapper">
 			<div class="site-wrapper-inner">
+				<div id="header">
 						<h1 class="cover-heading" style='text-align: center;'>{% block title %}Mercurial Bl&#9791;g{% endblock %}</h1>
+				</div>
+			</div>
 		</div>
-		</div>
+						<nav id="nav" class="navbar-static-top" data-spy="affix" data-offset-top="70">
+						<ul class="nav masthead-nav">
+								<li role="presentation"><a href="/">Home</a></li>
+								<li role="presentation"><a href="/bio">Bio</a></li>
+								<li role="presentation" class="active"><a href="/blog">Blog</a></li>
+							</ul>
+						</nav>
+	
 						{% for post in posts %}
 						</br>
+						<div class="container">
 						<p class="lead">
 							{{post.content}}
 						</p>
+						</div>
 						{% endfor %}
     	</body>
 </html>
