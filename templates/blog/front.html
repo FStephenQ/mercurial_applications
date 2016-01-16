@@ -19,31 +19,40 @@
 		<div class="site-wrapper">
 			<div class="site-wrapper-inner">
 				<div id="header">
-						<h1 class="cover-heading" style='text-align: center;'>{% block title %}Mercurial Bl&#9791;g{% endblock %}</h1>
+					<h1 class="cover-heading" style='text-align: center;'>{% block title %}Mercurial Bl&#9791;g{% endblock %}</h1>
 				</div>
 			</div>
 		</div>
-						<nav id="nav" class="navbar-static-top" data-spy="affix" data-offset-top="70">
-						<ul class="nav masthead-nav">
-								<li role="presentation"><a href="/">Home</a></li>
-								<li role="presentation"><a href="/bio">Bio</a></li>
-								<li role="presentation" class="active"><a href="/blog">Blog</a></li>
-							</ul>
-						</nav>
-	
-						{% for post in posts %}
-						</br>
-						<article>
-							<header>
-								<time>{{post.post_date}}</time>
-								<h2>{{post.title}}</h2>
-							</header>
-						<div class="container">
-							<p class="lead">
-								{{post.content}}
-							</p>
+		<nav id="nav" class="navbar-static-top" data-spy="affix" data-offset-top="70">
+			<ul class="nav masthead-nav">
+				<li role="presentation"><a href="/">Home</a></li>
+				<li role="presentation"><a href="/bio">Bio</a></li>
+				<li role="presentation" class="active"><a href="/blog">Blog</a></li>
+			</ul>
+		</nav>
+		{% for post in posts %}
+			<article>
+				<header>
+					<time>{{post.post_date}}</time>
+					<h2>{{post.title}}</h2>
+				</header>
+				<div class="container">
+					<div class="well">
+						<p class="lead">
+							{{post.content}}
+						</p>
+					</div>
+					<footer> 
+						{% if post.tags.count != 0 %}
+						<div class="well well-sm">
+							<h4> Tags: </h4>
+							{% for t in post.tags.all %} <a href="/blog/tag/{{t.name}}" style="color: black;">#{{t.name}}</a>{% endfor %}
 						</div>
-						</article>
-						{% endfor %}
+						{% endif %}
+					</footer>
+				</div>
+			</article>
+			<hr />
+		{% endfor %}
     	</body>
 </html>

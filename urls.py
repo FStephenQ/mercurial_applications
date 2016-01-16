@@ -11,7 +11,8 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', core_views.index),
     # url(r'^mercurial_applications/', include('mercurial_applications.foo.urls')),
-    url(r'^blog/',blog_views.front),
+    url(r'^blog/tag/([?P<tagname>[a-z]+)/$',blog_views.tag),
+    url(r'^blog/$',blog_views.front),
     url(r'^bio/',core_views.bio),
 
     # Uncomment the admin/doc line below to enable admin documentation:
