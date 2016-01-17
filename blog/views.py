@@ -9,13 +9,11 @@ def front(request):
         return render_to_response('blog/front.html',{'posts':posts,})
 
 def tag(request,tagname=""):
-    tag = None
     taglist = models.Tag.objects.filter(name__exact=tagname)
-    for t in taglist:
-        tag = t
-    if tag == None:
+    if taglist.count() == 0:
         return render_to_response('blog/tags.html',{'error':"That's an invalid tag!",'posts':models.Post.objects.all(),})
-    posts = models.Post.objects.filter(tags__in=tag)
+    tag = taglist[0]
+    posts = [post for post in models.Post.objects.all() if tag in list(post.tags.all())]
     if posts.count == 0:
         return render_to_response('blog/tags.hrml',{'tag':tag,'error':"There aren't any posts for that teg yet!",})
     else:
