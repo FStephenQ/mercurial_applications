@@ -30,6 +30,15 @@
 				<li role="presentation" class="active"><a href="/blog">Blog</a></li>
 			</ul>
 		</nav>
+		<div>
+			{% if tag != None %}
+			<h1>{{tag.name}}</h1>
+			<span> {{tag.description}}</span>
+			{% endif %}
+			{% if error != None %}
+			<div class="alert alert-danger" role="alert">{{error}}</div>
+			{% endif %}		
+		</div>
 		{% for post in posts %}
 			<article>
 				<header>
