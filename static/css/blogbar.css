@@ -39,6 +39,9 @@ p {
 	margin-right:auto;
 	background-color: #F5F5F5;
 }
+p > a{
+	color:darkblue;
+}
 nav {
 	background-color:#333;
 	color:#FFF;
