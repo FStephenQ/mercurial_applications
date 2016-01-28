@@ -18,3 +18,7 @@ def tag(request,tagname=""):
         return render_to_response('blog/front.hrml',{'tag':tag,'error':"There aren't any posts for that teg yet!",})
     else:
         return render_to_response('blog/front.html',{'tag':tag,'posts':posts,})
+
+def post(request,postid=0):
+    post = models.Post.objects.filter(id__exact=postid)
+    return render_to_response('blog/front.html',{'posts':post})
